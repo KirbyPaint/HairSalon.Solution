@@ -4,10 +4,14 @@ namespace HairSalon.Models
 {
   public class Stylist
   {
-    private static List<Stylist> _instances = new List<Stylist> { };
-    public int StylistId { get; }
+    public Stylist()
+    {
+      this.Clients = new HashSet<Client>();
+    }
+
+    public int StylistId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public List<Client> Clients { get; set; }
+    public virtual ICollection<Client> Clients { get; set; }
   }
 }

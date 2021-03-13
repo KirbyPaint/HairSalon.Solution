@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
@@ -6,65 +7,67 @@ using System.Linq;
 
 namespace HairSalon.Controllers
 {
-  public class StylistsController : Controller
+  public class ClientsController : Controller
   {
     private readonly HairSalonContext _db;
 
-    public StylistsController(HairSalonContext db)
+    public ClientsController(HairSalonContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
-      List<Stylist> model = _db.Stylists.ToList();
+      List<Client> model = _db.Clients.Include(clients => clients.Stylist).ToList();
       return View(model);
     }
 
     public ActionResult Create()
     {
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Stylist category)
+    public ActionResult Create(Client client)
     {
-      _db.Stylists.Add(category);
+      _db.Clients.Add(client);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      ViewBag.thisStylist = _db.Stylists.FirstOrDefault(cuisine => cuisine.StylistId == id);
-      ViewBag.clients = _db.Clients.Where(client => client.StylistId == id).ToList();
-      return View();
+      Client thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
+      return View(thisClient);
     }
+
     public ActionResult Edit(int id)
     {
-      var thisStylist = _db.Stylists.FirstOrDefault(category => category.StylistId == id);
-      return View(thisStylist);
+      var thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+      return View(thisClient);
     }
 
     [HttpPost]
-    public ActionResult Edit(Stylist category)
+    public ActionResult Edit(Client client)
     {
-      _db.Entry(category).State = EntityState.Modified;
+      _db.Entry(client).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      var thisStylist = _db.Stylists.FirstOrDefault(category => category.StylistId == id);
-      return View(thisStylist);
+      var thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
+      return View(thisClient);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisStylist = _db.Stylists.FirstOrDefault(category => category.StylistId == id);
-      _db.Stylists.Remove(thisStylist);
+      var thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
+      _db.Clients.Remove(thisClient);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
