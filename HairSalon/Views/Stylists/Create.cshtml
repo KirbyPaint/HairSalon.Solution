@@ -7,10 +7,12 @@
 <h4>Add New Stylist</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.FirstName)
-  @Html.TextBoxFor(model => model.FirstName)
-  @Html.LabelFor(model => model.LastName)
-  @Html.TextBoxFor(model => model.LastName)
-  <input type="submit" value="Submit New Stylist" />
+  @* @Html.LabelFor(model => model.FirstName) *@
+  <p>Enter Stylist's first name:
+  @Html.TextBoxFor(model => model.FirstName)</p>
+  @* @Html.LabelFor(model => model.LastName) *@
+  <p>Enter Stylist's last name:
+  @Html.TextBoxFor(model => model.LastName)</p>
+  <p><input type="submit" value="Save Stylist Record"></p>
 }
 <p>@Html.ActionLink("Show All Stylists", "Index")</p>
