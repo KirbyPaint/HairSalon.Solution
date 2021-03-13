@@ -5,15 +5,15 @@
 @using HairSalon.Models
 @model HairSalon.Models.Stylist
 
-<h2>Stylist Details</h2>
+<h1>Stylist Details</h1>
 <hr />
-<h3>@ViewBag.thisStylist.FirstName @ViewBag.thisStylist.LastName</h3>
+<p>@ViewBag.thisStylist.FirstName @ViewBag.thisStylist.LastName</p>
 
 <hr>
 
 @if (ViewBag.clients.Count == 0)
 {
-  <h3>NO CLIENTS</h3>
+  <p>NO CLIENTS</p>
 }
 else
 {

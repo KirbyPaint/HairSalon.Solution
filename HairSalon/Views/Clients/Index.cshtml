@@ -7,6 +7,8 @@
 
 <h1>Clients</h1>
 
+@* Cite your sources
+https://stackoverflow.com/questions/23365909/asp-net-mvc-viewbag-list-of-anonymous-class-throws-error-on-count-method/23366040 *@
 @if (((IEnumerable<dynamic>)ViewBag.Stylists).Count() == 0)
 {
   <p>You need to add a Stylist before you can add clients to the database.</p>
@@ -15,7 +17,7 @@ else
 {
   @if (@Model.Count == 0)
   {
-    <h3>No clients have been added yet!</h3>
+    <p>No clients have been added yet!</p>
   }
 
   @foreach (Client client in Model)
