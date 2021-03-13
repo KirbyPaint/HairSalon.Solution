@@ -22,7 +22,7 @@ else
 
   @foreach (Client client in Model)
   {
-    <li>@Html.ActionLink($"{client.FirstName}", "Details", new { id = client.ClientId }) | @client.Stylist.FirstName</li>
+    <li>@Html.ActionLink($"{client.FirstName}", "Details", new { id = client.ClientId }) | @client.Stylist.FirstName @client.Stylist.LastName</li>
   }
   <p>@Html.ActionLink("Add new client to database", "Create")</p>
 }
