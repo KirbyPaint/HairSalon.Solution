@@ -55,7 +55,7 @@ This ensures that the program will be able to read and write to your own local d
 
 This project's databases were made with the assistance of [MySQL Workbench 8.0.19](https://downloads.mysql.com/archives/workbench/).  
 
-Below is the basic structure dump for the table. You may import the entire table structure file as well through the MySQL workbench by importing the file named "ashley_porter.sql"
+Below is the basic structure dump for the table. You may import the entire table structure file as well through the MySQL workbench by importing the file in this project's root directory named "ashley_porter.sql". Open MySQL Workbench and navigate to the Administration tab. From there, click Data Import/Restore, and 
 
 ```
 --
@@ -121,7 +121,8 @@ All pages will contain a link back to the Home page.
 
 ## Known Bugs/Issues
 
-__
+_Users can submit blank Stylists/Clients. Have not worked out adding validation to an MVC page yet._
+_Contact Info should realistically be split into different types of contact information; however as this is a demonstration project, it is not high on the list of things to fix._
 
 ## Support and contact details
 
@@ -129,7 +130,7 @@ _Discord: @KirbyPaint#0751_
 
 ## Technologies Used
 
-_C#, .NET 5, ASP.NET MVC, MySQL and MySQL Workbench_
+_C#, .NET 5, ASP.NET MVC, MySQL and MySQL Workbench, Bootstrap (CSS)_
 
 ### License Information
 
